@@ -30,18 +30,52 @@ const arrOfAlphabet = [
 ];
 
 const convertToColNum = (excel = '') => {
-  let number = (excel.length - 1) * 26;
-  const lastChar = excel.charAt(excel.length - 1);
+  let firstLet = '';
+  let secondLet = '';
+  let thirdLet = '';
 
-  number +=
-    arrOfAlphabet.findIndex(
-      (value) => value.toLowerCase() === lastChar.toLowerCase()
-    ) + 1;
+  if (excel.length === 1) {
+    return (
+      arrOfAlphabet.findIndex(
+        (value) => excel.charAt(0).toUpperCase() === value
+      ) + 1
+    );
+  }
 
-  return number;
+  firstLet =
+    (arrOfAlphabet.findIndex(
+      (value) => excel.charAt(0).toUpperCase() === value
+    ) +
+      1) *
+    26;
+
+  if (excel.length === 2) {
+    return (
+      firstLet +
+      arrOfAlphabet.findIndex(
+        (value) => excel.charAt(1).toUpperCase() === value
+      )
+    );
+  }
+
+  if (excel.length === 3) {
+    firstLet = arrOfAlphabet.findIndex(
+      (value) => excel.charAt(0).toUpperCase() === value
+    );
+    secondLet = arrOfAlphabet.findIndex(
+      (value) => excel.charAt(1).toUpperCase() === value
+    );
+    thirdLet = arrOfAlphabet.findIndex(
+      (value) => excel.charAt(2).toUpperCase() === value
+    );
+
+    return 26 ** 2 * firstLet + 26 * secondLet + thirdLet;
+  }
+
+  return excel;
 };
 
-const excelCol = 'AB';
+const excelCol = 'XDF';
 console.log(excelCol, '->', convertToColNum(excelCol));
 
 // 2. Given a non-empty array of integers nums, every element

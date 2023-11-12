@@ -6,12 +6,11 @@
 // bisa checkout, pada saat checkout cart akan kosong dan stock akan berkurang
 // menu untuk menambahkan produk, edit produk, delete produk
 
-// produk, name, stock, category , warna
+// produk, name, stock, category , warna, price
 
 // category 2
 // pakaian => ukuran, brand
 // buku => author,totalPage
-
 class Tokopedia {
   products = [];
   cart = [];
@@ -111,20 +110,28 @@ class Product {
   }
 }
 
+class Baju extends Product {
+  constructor(name, categoryName, warna, ukuran, brand) {
+    super(name, categoryName, warna);
+    this.ukuran = ukuran;
+    this.brand = brand;
+  }
+}
+
+class Buku extends Product {
+  constructor(name, categoryName, warna, author, totalPage) {
+    super(name, categoryName, warna);
+    this.author = author;
+    this.totalPage = totalPage;
+  }
+}
+
 // Execute
 const tokopedia = new Tokopedia();
 
 // Create Product instance
-const bajuGucci = new Product(
-  'gucci',
-  { pakaian: { ukuran: 'xl', brand: 'gucci' } },
-  'biru'
-);
-const Baju3s = new Product(
-  'Baju Keren',
-  { pakaian: { ukuran: 'xl', brand: '3s' } },
-  'hitam'
-);
+const bajuGucci = new Baju('baju gucci', 'baju', 'biru', 'xl', 'gucci');
+const Baju3s = new Buku('Buku java', 'buku', 'hitam', 'gosling', 120);
 /////////////////////////////////////////////////////
 
 tokopedia.addProduct(bajuGucci, 18);
