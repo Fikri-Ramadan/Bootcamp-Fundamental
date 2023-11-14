@@ -17,12 +17,12 @@ class Order {
   async proses() {
     console.log('proses...');
     let counter = 0;
-    while (counter <= this.#orders.length) {
+    while (counter < this.#orders.length) {
       let randomSeconds = (Math.floor(Math.random() * 10) + 1) * 1000;
       let queue = counter + 1;
 
       await this.timeout(randomSeconds);
-      console.log(`Queue ${queue} Done in ${randomSeconds / 1000} seconds`);
+      console.log(`Queue ${queue + 1} ${this.#orders[counter]} Done in ${randomSeconds / 1000} seconds`);
 
       counter++;
     }
