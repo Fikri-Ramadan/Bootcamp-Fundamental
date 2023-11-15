@@ -1,16 +1,16 @@
 var checkIfInstanceOf = function (obj, classFunction) {
-  while(obj != null) {
+  while (obj != null) {
     if (obj === classFunction.prototype) {
       return true;
     }
-``
+
     obj = Object.getPrototypeOf(obj);
   }
 
   return false;
 };
 
-console.log(checkIfInstanceOf(Number.NaN, Number))
+console.log(checkIfInstanceOf(Number.NaN, Number));
 
 // checkIfInstanceOf(Date, Date)
 
